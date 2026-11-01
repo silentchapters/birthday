@@ -140,12 +140,15 @@
 
 .book-cover {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
   z-index: 10;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   background-image: url('cover.png');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -153,6 +156,10 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   transition: transform 1.2s ease-in-out;
+}
+
+.book-cover.opened {
+  transform: rotateY(-180deg);
 }
 
 .book-cover.opened {
