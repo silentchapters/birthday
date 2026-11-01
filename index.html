@@ -67,16 +67,7 @@
       background: rgba(50, 25, 12, 0.4);
       z-index: 3;
     }
-.closed-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: #3b261d;
-  z-index: 9;
-  box-shadow: inset -8px 0 12px rgba(0,0,0,0.25);
-}
+
     .flip-page {
       position: absolute;
       top: 0;
@@ -145,36 +136,7 @@
         padding: 10px 18px;
       }
     }
-    /* FRONT COVER */
-
-.book-cover {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
-  height: 100%;
-  z-index: 10;
-  overflow: hidden;
-  border-radius: 0 5px 5px 0;
-  background-image: url('cover.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  transform-origin: left center;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-  transition: transform 1.2s ease-in-out;
-}
-
-.book-cover.opened {
-  transform: rotateY(-180deg);
-}
-
-.cover-title,
-.cover-flowers {
-  display: none;
-}
+  
   </style>
 </head>
 
@@ -195,35 +157,6 @@
       </div>
 
       <div class="book-spine"></div>
-      <div class="closed-back" id="closedBack"></div>
-      <div class="book-cover" id="bookCover" onclick="openBook()">
-
-  <div class="cover-title">
-    <h1>A Promise and a Wish</h1>
-    <p>A little world made with love</p>
-  </div>
-
-  <div class="cover-flowers">
-    <div class="flower flower-one">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <i></i>
-    </div>
-
-    <div class="flower flower-two">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <i></i>
-    </div>
-
-    <div class="flower flower-three">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span><span></span>
-      <i></i>
-    </div>
-  </div>
-
-</div>
 
     </div>
 
@@ -242,11 +175,7 @@
   </div>
 
   <script>
-  function openBook() {
-  document.getElementById('bookCover').classList.add('opened');
-  document.getElementById('closedBack').style.display = 'none';
-}
-    function turnPage() {
+  function turnPage() {
   document.getElementById('flipPage').classList.add('flipped');
 }
 
