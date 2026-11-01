@@ -67,7 +67,16 @@
       background: rgba(50, 25, 12, 0.4);
       z-index: 3;
     }
-
+.closed-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #3b261d;
+  z-index: 9;
+  box-shadow: inset -8px 0 12px rgba(0,0,0,0.25);
+}
     .flip-page {
       position: absolute;
       top: 0;
@@ -148,7 +157,7 @@
   overflow: hidden;
   border-radius: 0 5px 5px 0;
   background-image: url('cover.png');
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -162,11 +171,6 @@
   transform: rotateY(-180deg);
 }
 
-.book-cover.opened {
-  transform: rotateY(-180deg);
-}
-
-/* Use the uploaded cover artwork */
 .cover-title,
 .cover-flowers {
   display: none;
@@ -238,16 +242,17 @@
   </div>
 
   <script>
-    function openBook() {
+  function openBook() {
   document.getElementById('bookCover').classList.add('opened');
+  document.getElementById('closedBack').style.display = 'none';
 }
     function turnPage() {
-      document.getElementById('flipPage').classList.add('flipped');
-    }
+  document.getElementById('flipPage').classList.add('flipped');
+}
 
-    function resetPage() {
-      document.getElementById('flipPage').classList.remove('flipped');
-    }
+function resetPage() {
+  document.getElementById('flipPage').classList.remove('flipped');
+}
   </script>
 
 </body>
