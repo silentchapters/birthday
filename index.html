@@ -65,8 +65,10 @@
       height: 100%;
       transform: translateX(-50%);
       background: rgba(50, 25, 12, 0.4);
-      z-index: 3;
+      z-index: 20;
     }
+
+    /* MULTIPLE FLIPPING PAGES */
 
     .flip-page {
       position: absolute;
@@ -77,11 +79,11 @@
       transform-style: preserve-3d;
       transform-origin: left center;
       transition: transform 1.2s ease-in-out;
-      z-index: 4;
     }
 
     .flip-page.flipped {
       transform: rotateY(-180deg);
+      box-shadow: -8px 0 18px rgba(0, 0, 0, 0.2);
     }
 
     .page-face {
@@ -104,9 +106,7 @@
       border-radius: 5px 0 0 5px;
     }
 
-    .flip-page.flipped {
-      box-shadow: -8px 0 18px rgba(0, 0, 0, 0.2);
-    }
+    /* BUTTONS */
 
     .controls {
       display: flex;
@@ -127,6 +127,11 @@
       background: #edcfaa;
     }
 
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 8px;
@@ -136,7 +141,6 @@
         padding: 10px 18px;
       }
     }
-  
   </style>
 </head>
 
@@ -149,11 +153,40 @@
       <div class="page left-page"></div>
       <div class="page right-page"></div>
 
-      <div class="flip-page" id="flipPage">
-
+      <!-- PAGE 1 -->
+      <div class="flip-page">
         <div class="page-face page-front"></div>
         <div class="page-face page-back"></div>
+      </div>
 
+      <!-- PAGE 2 -->
+      <div class="flip-page">
+        <div class="page-face page-front"></div>
+        <div class="page-face page-back"></div>
+      </div>
+
+      <!-- PAGE 3 -->
+      <div class="flip-page">
+        <div class="page-face page-front"></div>
+        <div class="page-face page-back"></div>
+      </div>
+
+      <!-- PAGE 4 -->
+      <div class="flip-page">
+        <div class="page-face page-front"></div>
+        <div class="page-face page-back"></div>
+      </div>
+
+      <!-- PAGE 5 -->
+      <div class="flip-page">
+        <div class="page-face page-front"></div>
+        <div class="page-face page-back"></div>
+      </div>
+
+      <!-- PAGE 6 -->
+      <div class="flip-page">
+        <div class="page-face page-front"></div>
+        <div class="page-face page-back"></div>
       </div>
 
       <div class="book-spine"></div>
@@ -164,24 +197,98 @@
 
   <div class="controls">
 
-    <button onclick="turnPage()">
+    <button id="nextButton" onclick="turnPage()">
       Turn Page
     </button>
 
-    <button onclick="resetPage()">
+    <button id="backButton" onclick="resetPage()">
       Turn Back
     </button>
 
   </div>
 
   <script>
-  function turnPage() {
-  document.getElementById('flipPage').classList.add('flipped');
-}
 
-function resetPage() {
-  document.getElementById('flipPage').classList.remove('flipped');
-}
+    const pages = document.querySelectorAll('.flip-page');
+
+    let currentPage = 0;
+    let isTurning = false;
+
+    // Arrange the pages in a stack
+
+    pages.forEach((page, index) => {
+      page.dataset.index = index;
+      page.style.zIndex = pages.length - index + 10;
+    });
+
+    function updateButtons() {
+      document.getElementById('nextButton').disabled =
+        currentPage >= pages.length;
+
+      document.getElementById('backButton').disabled =
+        currentPage <= 0;
+    }
+
+    function turnPage() {
+
+      if (isTurning || currentPage >= pages.length) return;
+
+      isTurning = true;
+
+      const page = pages[currentPage];
+      const index = Number(page.dataset.index);
+
+      page.style.zIndex = pages.length + 20;
+
+      page.classList.add('flipped');
+
+      currentPage++;
+
+      page.addEventListener('transitionend', function(event) {
+
+        if (event.propertyName !== 'transform') return;
+
+        page.style.zIndex = index + 1;
+
+        isTurning = false;
+        updateButtons();
+
+      }, { once: true });
+
+      updateButtons();
+    }
+
+    function resetPage() {
+
+      if (isTurning || currentPage <= 0) return;
+
+      isTurning = true;
+
+      currentPage--;
+
+      const page = pages[currentPage];
+      const index = Number(page.dataset.index);
+
+      page.style.zIndex = pages.length + 20;
+
+      page.classList.remove('flipped');
+
+      page.addEventListener('transitionend', function(event) {
+
+        if (event.propertyName !== 'transform') return;
+
+        page.style.zIndex = pages.length - index + 10;
+
+        isTurning = false;
+        updateButtons();
+
+      }, { once: true });
+
+      updateButtons();
+    }
+
+    updateButtons();
+
   </script>
 
 </body>
