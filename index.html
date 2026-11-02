@@ -57,19 +57,25 @@
       background-position: right center;
     }
 
-    /* TEMPORARY TEST PAGES */
+   /* PAGE 2 - GOLDEN LAKE SPREAD */
 
-    .paper-page {
-      background:
-        linear-gradient(
-          90deg,
-          #e8d6b9,
-          #f4e9d5 12%,
-          #f4e9d5 88%,
-          #e8d6b9
-        );
-      border: 1px solid rgba(100, 65, 35, 0.12);
-    }
+/* LEFT PAGE - FLOWERS AND WRITING SPACE */
+
+.page2-left {
+  background-image: url('page2-left-parchment.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* RIGHT PAGE - GOLDEN SUNSET */
+
+.page2-right {
+  background-image: url('page2-right-sunset.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
     /* NAVIGATION */
 
@@ -121,11 +127,11 @@
     <!-- PAGE 2: INTRODUCTION -->
     <div class="page intro-right"></div>
 
-    <!-- PAGE 3: TEMPORARY TEST PAGE -->
-    <div class="page paper-page"></div>
+   <!-- PAGE 3: PAGE 2 - WRITING PAGE -->
+<div class="page page2-left"></div>
 
-    <!-- PAGE 4: TEMPORARY TEST PAGE -->
-    <div class="page paper-page"></div>
+<!-- PAGE 4: PAGE 2 - SUNSET ILLUSTRATION -->
+<div class="page page2-right"></div>
 
   </main>
 
