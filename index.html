@@ -112,6 +112,22 @@
         padding: 10px 18px;
       }
     }
+    /* PAGE 3 - COMBINED SPREAD */
+
+.page3-left,
+.page3-right {
+  background-image: url('./page3-spread.png');
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+}
+
+.page3-left {
+  background-position: left center;
+}
+
+.page3-right {
+  background-position: right center;
+}
   </style>
 </head>
 
@@ -137,17 +153,11 @@
            alt="Page 2 sunset">
     </div>
 
-    <!-- PAGE 5: PAGE 3 PARCHMENT -->
-    <div class="page">
-      <img src="./page3-left-parchment.png"
-           alt="Page 3 parchment">
-    </div>
+    <!-- PAGE 5: PAGE 3 LEFT -->
+<div class="page page3-left"></div>
 
-    <!-- PAGE 6: PAGE 3 SUNSET -->
-    <div class="page">
-      <img src="./page3-right-sunset.png"
-           alt="Page 3 sunset">
-    </div>
+<!-- PAGE 6: PAGE 3 RIGHT -->
+<div class="page page3-right"></div>
 
   </main>
 
