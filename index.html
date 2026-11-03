@@ -38,61 +38,43 @@
     /* INDIVIDUAL PAGES */
 
     .page {
+      position: relative;
       background-color: #f1e3cb;
-      background-repeat: no-repeat;
       overflow: hidden;
+    }
+
+    .page img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
     }
 
     /* OPENING SUNSET SPREAD */
 
-    .intro-left {
-      background-image: url('sunset-book.png');
+    .intro-left,
+    .intro-right {
+      background-image: url('./sunset-book.png');
+      background-repeat: no-repeat;
       background-size: 200% 100%;
+    }
+
+    .intro-left {
       background-position: left center;
     }
 
     .intro-right {
-      background-image: url('sunset-book.png');
-      background-size: 200% 100%;
       background-position: right center;
     }
 
-   /* PAGE 2 - GOLDEN LAKE SPREAD */
+    /* PAGE 2 - GOLDEN LAKE SPREAD */
 
-/* LEFT PAGE - FLOWERS AND WRITING SPACE */
+    /* PAGE 2 LEFT - PARCHMENT */
 
-.page2-left {
-  background-image: url('page2-left-parchment.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+    /* PAGE 2 RIGHT - SUNSET */
 
-/* RIGHT PAGE - GOLDEN SUNSET */
+    /* PAGE 3 - PARCHMENT AND SUNSET */
 
-.page2-right {
-  background-image: url('page2-right-sunset.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-/* PAGE 3 - LEFT PAGE - PARCHMENT */
-
-.page3-left {
-  background-image: url('page3-left-parchment.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* PAGE 3 - RIGHT PAGE - GOLDEN SUNSET */
-
-.page3-right {
-  background-image: url('page3-right-sunset.png');
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
     /* NAVIGATION */
 
     .controls {
@@ -143,28 +125,39 @@
     <!-- PAGE 2: INTRODUCTION -->
     <div class="page intro-right"></div>
 
-   <!-- PAGE 3: PAGE 2 - WRITING PAGE -->
-<div class="page page2-left"></div>
+    <!-- PAGE 3: PAGE 2 PARCHMENT -->
+    <div class="page">
+      <img src="./page2-left-parchment.png"
+           alt="Page 2 parchment">
+    </div>
 
-<!-- PAGE 4: PAGE 2 - SUNSET ILLUSTRATION -->
-<div class="page page2-right"></div>
-    <!-- PAGE 5: PAGE 3 - PARCHMENT -->
-<div class="page page3-left"></div>
+    <!-- PAGE 4: PAGE 2 SUNSET -->
+    <div class="page">
+      <img src="./page2-right-sunset.png"
+           alt="Page 2 sunset">
+    </div>
 
-<!-- PAGE 6: PAGE 3 - SUNSET ILLUSTRATION -->
-<div class="page page3-right"></div>
+    <!-- PAGE 5: PAGE 3 PARCHMENT -->
+    <div class="page">
+      <img src="./page3-left-parchment.png"
+           alt="Page 3 parchment">
+    </div>
+
+    <!-- PAGE 6: PAGE 3 SUNSET -->
+    <div class="page">
+      <img src="./page3-right-sunset.png"
+           alt="Page 3 sunset">
+    </div>
 
   </main>
 
+  <!-- NAVIGATION -->
+
   <div class="controls">
 
-    <button id="backButton">
-      Turn Back
-    </button>
+    <button id="backButton">Turn Back</button>
 
-    <button id="nextButton">
-      Turn Page
-    </button>
+    <button id="nextButton">Turn Page</button>
 
   </div>
 
@@ -206,8 +199,6 @@
     pageFlip.loadFromHTML(
       document.querySelectorAll('.page')
     );
-
-    // PAGE NAVIGATION
 
     document.getElementById('nextButton')
       .addEventListener('click', () => {
