@@ -13,6 +13,7 @@
     * {
       box-sizing: border-box;
     }
+    
 
     body {
       margin: 0;
@@ -67,11 +68,22 @@
       background-position: right center;
     }
 
-    /* PAGE 2 - GOLDEN LAKE SPREAD */
+   /* PAGE 2 - GOLDEN LIGHT SPREAD */
 
-    /* PAGE 2 LEFT - PARCHMENT */
+.page2-left,
+.page2-right {
+  background-image: url('./golden-light-spread.png');
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+}
 
-    /* PAGE 2 RIGHT - SUNSET */
+.page2-left {
+  background-position: left center;
+}
+
+.page2-right {
+  background-position: right center;
+}
 
     /* PAGE 3 - PARCHMENT AND SUNSET */
 
@@ -155,17 +167,11 @@
     <!-- PAGE 2: INTRODUCTION -->
     <div class="page intro-right"></div>
 
-    <!-- PAGE 3: PAGE 2 PARCHMENT -->
-    <div class="page">
-      <img src="./page2-left-parchment.png"
-           alt="Page 2 parchment">
-    </div>
+   <!-- PAGE 3: GOLDEN LIGHT LEFT -->
+<div class="page page2-left"></div>
 
-    <!-- PAGE 4: PAGE 2 SUNSET -->
-    <div class="page">
-      <img src="./page2-right-sunset.png"
-           alt="Page 2 sunset">
-    </div>
+<!-- PAGE 4: GOLDEN LIGHT RIGHT -->
+<div class="page page2-right"></div>
 
     <!-- PAGE 5: PAGE 3 LEFT -->
 <div class="page page3-left"></div>
